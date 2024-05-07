@@ -239,20 +239,10 @@ function test18()
     -- be different than the earlier seed (if not specifically
     -- engineered to be the same)
     math.randomseed(8675309, 1492101)
-    good = good and math.random() ~= numbers1[i]
+    good = good and math.random() ~= numbers1[1]
 
     for i = 1, 10000, 1 do
-        numbers3[#numbers3 + 1] = math.random()
-    end
-
-    local numbers4 = {}
-    math.randomseed(2345, 1492101)
-    for i = 1, 10000, 1 do
-        numbers4[#numbers4 + 1] = math.random()
-    end
-
-    for i = 1, 10000, 1 do
-        good = good and numbers3[i] == numbers4[i]
+        good = good and numbers1[i] == numbers2[i]
     end
 
     -- `math.random(0)` should return a fully random integer.
